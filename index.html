@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday chomu!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#4A3350;--p1:#3B3558;--p2:#241F3A;--violet:#A66BFF;--txt:#fff;--sub:#D8CFEE;color-scheme:light dark;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--p2);font-family:'Fredoka',system-ui,sans-serif;overflow:hidden}
+.app{height:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:var(--p2)}
+.scene{position:relative;flex:1 1 55%;min-height:0;background:linear-gradient(#4F9CFF,#BEE0FF 70%,#E4F2FF)}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.bubble{position:absolute;left:50%;top:5%;transform:translateX(-50%) rotate(-1.5deg);width:80%;min-height:27%;background:#fff;border:4px solid #4DA3FF;border-radius:26px 30px 24px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 16px;text-align:center;color:var(--ink);font-weight:600;font-size:clamp(1.05rem,5vw,1.6rem);line-height:1.2;z-index:2}
+.bubble small{font-size:.62em;color:#7A5FA0;margin-bottom:2px}
+.bubble::after{content:"";position:absolute;bottom:-22px;right:16%;border:12px solid transparent;border-top:14px solid #4DA3FF;border-bottom:0}
+.bubble.l::after{right:auto;left:16%}
+.panel{flex:0 0 auto;background:linear-gradient(160deg,var(--p1),var(--p2));border-radius:28px 28px 0 0;padding:24px 22px calc(20px + env(safe-area-inset-bottom,0px));margin-top:-18px;position:relative;z-index:3;display:flex;align-items:flex-end;gap:14px;min-height:36%;max-height:50%}
+.panel::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px;background:radial-gradient(circle at 50% 100%,var(--p1) 15px,transparent 16px) 0 0/32px 16px repeat-x;pointer-events:none}
+.panel::after{content:"";position:absolute;inset:0;border-radius:28px 28px 0 0;background:radial-gradient(#ffffff14 1.5px,transparent 2px) 0 0/18px 18px;pointer-events:none;z-index:-1}
+.txt{flex:1;overflow:auto;max-height:100%}
+h1{color:var(--txt);font-size:clamp(1.6rem,7.5vw,2.3rem);line-height:1.1;margin:0 0 8px;font-weight:600}
+.sub{color:var(--sub);margin:0;font-size:1rem;white-space:pre-line}
+.next{flex:0 0 auto;width:60px;height:60px;border-radius:50%;border:0;background:#fff;color:#241F3A;font-size:26px;cursor:pointer}
+.next:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.dots{position:absolute;top:-2px;left:22px;display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#ffffff55}
+.dots i.on{background:var(--violet)}
+.ch{transform-box:fill-box;transform-origin:50% 100%;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 4px 0 rgba(74,51,80,.25))}
+.ch.b{animation-delay:-1.2s}
+.ch.hop{animation:hop .7s ease}
+.ch.shake{animation:shake .6s ease}
+.ch.spin{animation:spin .9s ease}
+.fxe{transform-box:fill-box;transform-origin:50% 100%;animation:pop .9s ease-in-out infinite alternate}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@keyframes hop{30%{transform:translateY(-26px) rotate(-5deg)}65%{transform:translateY(0) rotate(4deg)}}
+@keyframes shake{20%{transform:translateX(-8px) rotate(-4deg)}40%{transform:translateX(8px) rotate(4deg)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(.9) rotate(-6deg)}to{transform:scale(1.12) rotate(6deg)}}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9}
+@media (prefers-reduced-motion:reduce){.ch,.ch.hop,.ch.shake,.ch.spin,.fxe{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="app">
+  <div class="scene">
+    <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMax meet" aria-hidden="true" font-family="Fredoka,sans-serif">
+      <g fill="#fff"><ellipse cx="50" cy="150" rx="60" ry="26"/><ellipse cx="90" cy="130" rx="40" ry="26"/><ellipse cx="350" cy="190" rx="56" ry="24"/><ellipse cx="320" cy="170" rx="36" ry="22"/></g>
+      <g fill="#58C27D"><circle cx="22" cy="268" r="34"/><circle cx="56" cy="282" r="28"/><circle cx="380" cy="265" r="36"/><circle cx="348" cy="282" r="26"/></g>
+      <g fill="#FF8FB1"><circle cx="20" cy="262" r="5"/><circle cx="378" cy="258" r="5"/></g><g fill="#FFD84D"><circle cx="58" cy="276" r="5"/><circle cx="346" cy="276" r="5"/></g>
+      <ellipse cx="200" cy="320" rx="190" ry="48" fill="#E59A2B"/><rect x="10" y="296" width="380" height="24" fill="#E59A2B"/>
+      <ellipse cx="200" cy="296" rx="190" ry="48" fill="#B8E868"/><ellipse cx="200" cy="296" rx="190" ry="48" fill="none" stroke="#9AD14C" stroke-width="4"/>
+      <text id="cA" class="ch" x="105" y="292" font-size="104" text-anchor="middle">&#128059;</text>
+      <text id="cB" class="ch b" x="295" y="292" font-size="104" text-anchor="middle">&#128060;</text>
+      <text id="pA" class="fxe" x="150" y="262" font-size="50" text-anchor="middle"></text>
+      <text id="pB" class="fxe" x="248" y="262" font-size="50" text-anchor="middle"></text>
+      <text id="mA" class="fxe" x="105" y="178" font-size="38" text-anchor="middle"></text>
+      <text id="mB" class="fxe" x="295" y="178" font-size="38" text-anchor="middle"></text>
+      <text id="tagA" x="30" y="332" font-size="20" font-weight="600" fill="#fff" stroke="#4A3350" stroke-width="4" paint-order="stroke" transform="rotate(4 30 332)"></text>
+      <text id="tagB" x="370" y="332" text-anchor="end" font-size="20" font-weight="600" fill="#fff" stroke="#4A3350" stroke-width="4" paint-order="stroke" transform="rotate(-4 370 332)"></text>
+    </svg>
+    <div class="bubble" id="bubble" aria-live="polite"><small id="who"></small><span id="say"></span></div>
+  </div>
+  <div class="panel">
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <div class="txt"><h1 id="title"></h1><p class="sub" id="sub"></p></div>
+    <button class="next" id="next" type="button" aria-label="Next">&#10095;</button>
+  </div>
+</div>
+
+<script>
+/* EDIT: all text lives here. Characters: A = mafia jeon (bear), B = chomu (panda).
+   s = who speaks ('a' or 'b'), fx = animation, pa/pb = prop emoji, ma/mb = mood emoji above head */
+const CONFIG = {
+  sister: "chomu", from: "mafia jeon",
+  scenes: [
+    { s: 'a', say: "Oye chomu! Aaj kya din hai pata hai?", fx: 'hop', ma: '\u2728', title: "Aaj ek bohat khaas din hai", sub: "Haan Kutti, tumhari birthday hai. Aur mujhe tumhein jhelna padega." },
+    { s: 'b', say: "Pata hai. Mera gift kahan hai?", fx: 'shake', mb: '\uD83D\uDCA2', pb: '\uD83C\uDF81', title: "Bari behen ka pehla sawal", sub: "Hamesha gift. Hamesha. Hello bhi nahi bola." },
+    { s: 'a', say: "Gift? Mere paas sirf ye hai...", fx: 'shake', pa: '\uD83D\uDD95', mb: '\uD83D\uDE12', title: "Jab alfaaz nahi milte", sub: "To bas ye sign dikha deti hoon. Tum jaanti ho iska asli matlab: \"Tum meri favourite insaan ho.\"" },
+    { s: 'b', say: "Tum se zyada ajeeb behen kisi ki nahi hogi.", fx: 'spin', ma: '\uD83D\uDE02', title: "Official Roast Time", sub: "1. Tumhari hansi aisi hai jaise ghar mein alarm baj gaya ho.\n2. Mera charger tum kabhi wapas nahi karti.\n3. Aur tum Jimin ko zyada pyar karti ho, jo galat hai. (Jungkook best.)" },
+    { s: 'a', say: "Acha sunno... thora emotional ho jaun?", fx: 'hop', ma: '\uD83E\uDD7A', mb: '\uD83D\uDC9C', title: "Ab serious baat", sub: "Tum meri badi behen ho, meri best friend, meri raaz-daar, aur meri sab se badi supporter." },
+    { s: 'b', say: "Ho jao. Tissue le aayi hoon.", fx: 'hop', pb: '\uD83E\uDDFB', ma: '\uD83D\uDE2D', mb: '\uD83D\uDC9C', title: "Tumhare bina main adhoori hoon", sub: "Jo bhi hua, tum hamesha mere saath rahi. Main kabhi bata nahi pati, isliye aaj likh rahi hoon." },
+    { s: 'a', say: "Happy Birthday, chomu!", fx: 'hop', pa: '\uD83C\uDF82', pb: '\uD83C\uDF89', ma: '\uD83D\uDC9C', mb: '\uD83D\uDC9C', final: true, title: "Happy Birthday, chomu!", sub: "Meri pyari Kutti, meri Laanti, meri jaan.\n\nAllah tumhein hamesha khush rakhe, healthy rakhe, aur har dua puri kare. Bohat saara cake, bohat saari hansi, aur BTS ke saath zyada concerts.\n\nI purple you \uD83D\uDC9C\n\nTumhari chhoti behen,\n{f}" }
+  ]
+};
+const $ = id => document.getElementById(id);
+const fill = s => s.replace(/\{f\}/g, CONFIG.from).replace(/\{n\}/g, CONFIG.sister);
+$('tagA').textContent = CONFIG.from; $('tagB').textContent = CONFIG.sister;
+document.title = 'Happy Birthday ' + CONFIG.sister + '!';
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const dots = $('dots'); CONFIG.scenes.forEach(() => dots.appendChild(document.createElement('i')));
+let i = 0, timer = 0;
+
+function type(text) {
+  clearInterval(timer); const el = $('say');
+  if (reduce) { el.textContent = text; return; }
+  let k = 0; el.textContent = '';
+  timer = setInterval(() => { el.textContent = text.slice(0, ++k); if (k >= text.length) clearInterval(timer); }, 34);
+}
+function show() {
+  const sc = CONFIG.scenes[i];
+  $('pA').textContent = sc.pa || ''; $('pB').textContent = sc.pb || '';
+  $('mA').textContent = sc.ma || ''; $('mB').textContent = sc.mb || '';
+  const who = sc.s === 'a' ? 'cA' : 'cB', el = $(who);
+  ['cA', 'cB'].forEach(id => $(id).setAttribute('class', 'ch' + (id === 'cB' ? ' b' : '')));
+  void el.getBoundingClientRect(); el.classList.add(sc.fx || 'hop');
+  $('who').textContent = sc.s === 'a' ? CONFIG.from : CONFIG.sister;
+  $('bubble').classList.toggle('l', sc.s === 'a');
+  type(fill(sc.say)); $('title').textContent = fill(sc.title); $('sub').textContent = fill(sc.sub);
+  [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+  $('next').innerHTML = sc.final ? '&#8635;' : '&#10095;'; $('next').setAttribute('aria-label', sc.final ? 'Play again' : 'Next');
+  if (sc.final) { burst(); setTimeout(burst, 700); }
+}
+$('next').addEventListener('click', () => { i = CONFIG.scenes[i].final ? 0 : i + 1; show(); });
+show();
+
+/* confetti */
+const cv = $('fx'), cx = cv.getContext('2d'); let parts = [], raf = 0;
+function size() { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+size(); addEventListener('resize', size);
+function burst() {
+  if (reduce) return; const c = ['#A66BFF', '#FF7BA3', '#FFD84D', '#7BC8FF', '#8BE0B5'], d = devicePixelRatio;
+  for (let k = 0; k < 140; k++) parts.push({ x: cv.width / 2, y: cv.height * .5, vx: (Math.random() - .5) * 18 * d, vy: (-Math.random() * 15 - 4) * d, s: (6 + Math.random() * 6) * d, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: c[k % 5], life: 140 });
+  if (!raf) raf = requestAnimationFrame(tick);
+}
+function tick() {
+  cx.clearRect(0, 0, cv.width, cv.height); parts = parts.filter(p => p.life-- > 0);
+  parts.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += .4 * devicePixelRatio; p.vx *= .99; p.r += p.vr; cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.globalAlpha = Math.min(1, p.life / 40); cx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * .6); cx.restore(); });
+  raf = parts.length ? requestAnimationFrame(tick) : 0;
+}
+</script>
+</body>
+</html>
